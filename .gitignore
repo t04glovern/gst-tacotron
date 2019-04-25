@@ -6,6 +6,6 @@ database
 run*.sh
 training*/
 logs*
-database
 *.zip
 
+logs-tacotron/
