@@ -40,7 +40,7 @@ A tensorflow implementation of the [Style Tokens: Unsupervised Style Modeling, C
 
     The following are supported out of the box:
     * [LJ Speech](https://keithito.com/LJ-Speech-Dataset/) (Public Domain)
-    * [Blizzard 2012](http://www.cstr.ed.ac.uk/projects/blizzard/2012/phase_one) (Creative Commons Attribution Share-Alike)
+    * [Blizzard 2013](http://www.cstr.ed.ac.uk/projects/blizzard/2013/lessac_blizzard2013/) (Creative Commons Attribution Share-Alike)
 
     You can use other datasets if you convert them to the right format. See [TRAINING_DATA.md](TRAINING_DATA.md) for more info.
 
@@ -55,11 +55,11 @@ A tensorflow implementation of the [Style Tokens: Unsupervised Style Modeling, C
           |- wavs
     ```
 
-    or like this for Blizzard 2012:
+    or like this for Blizzard 2013:
 
     ```bash
     database
-      |- Blizzard2012
+      |- Blizzard2013
           |- ATrampAbroad
           |   |- sentence_index.txt
           |   |- lab
@@ -104,6 +104,7 @@ Since the paper didn't talk about the details of the style-attention layer, I'm 
 
 ## Reference
 
+* Fork of syang1993's implementation of tacotron: [https://github.com/syang1993/gst-tacotron](https://github.com/syang1993/gst-tacotron)
 * Keithito's implementation of tacotron: [https://github.com/keithito/tacotron](https://github.com/keithito/tacotron)
 * Yuxuan Wang, Daisy Stanton, Yu Zhang, RJ Skerry-Ryan, Eric Battenberg, Joel Shor, Ying Xiao, Fei Ren, Ye Jia, Rif A. Saurous. 2018. [Style Tokens: Unsupervised Style Modeling, Control and Transfer in End-to-End Speech Synthesis](https://arxiv.org/abs/1803.09017)
 * RJ Skerry-Ryan, Eric Battenberg, Ying Xiao, Yuxuan Wang, Daisy Stanton, Joel Shor, Ron J. Weiss, Rob Clark, Rif A. Saurous. 2018. [Towards End-to-End Prosody Transfer for Expressive Speech Synthesis with Tacotron](https://arxiv.org/abs/1803.09047).
