@@ -4,7 +4,7 @@ A tensorflow implementation of the [Style Tokens: Unsupervised Style Modeling, C
 
 ## Audio Samples
 
-* **[Audio Samples](https:///syang1993.github.io/gst-tacotron/)** from models trained using this repo with default hyper-params.
+* **[Audio Samples](https:///t04glovern.github.io/gst-tacotron/)** from models trained using this repo with default hyper-params.
   * This set was trained using the [Blizzard 2013 dataset](http://www.cstr.ed.ac.uk/projects/blizzard/2013/lessac_blizzard2013/) with and without global style tokens (GSTs).
     * I found the synthesized audio can learn the prosody of the reference audio.
     * The audio quality isn't so good as the paper. Maybe more data, more training steps and the wavenet vocoder will improve the quality, as well as better attention mechanism.
@@ -32,6 +32,24 @@ A tensorflow implementation of the [Style Tokens: Unsupervised Style Modeling, C
   conda activate tacotron
   ```
 
+### Pre-trained model
+
+1. **Download and unpack a model**:
+
+   ```bash
+   aws s3 sync s3://devopstar/gst-tacotron/ logs-tacotron/
+   ```
+
+2. **Run the demo server**:
+
+   ```bash
+   python3 demo_server.py --checkpoint logs-tacotron/model.ckpt-34000
+   ```
+
+3. **Point your browser at localhost:9000**
+
+   * Type what you want to synthesize
+
 ### Training
 
 *Note: you need at least 40GB of free disk space to train a model.*
@@ -41,8 +59,6 @@ A tensorflow implementation of the [Style Tokens: Unsupervised Style Modeling, C
     The following are supported out of the box:
     * [LJ Speech](https://keithito.com/LJ-Speech-Dataset/) (Public Domain)
     * [Blizzard 2013](http://www.cstr.ed.ac.uk/projects/blizzard/2013/lessac_blizzard2013/) (Creative Commons Attribution Share-Alike)
-
-    You can use other datasets if you convert them to the right format. See [TRAINING_DATA.md](TRAINING_DATA.md) for more info.
 
 2. **Unpack the dataset into `database`**
 
@@ -88,7 +104,19 @@ A tensorflow implementation of the [Style Tokens: Unsupervised Style Modeling, C
 
     Tunable hyperparameters are found in [hparams.py](hparams.py). You can adjust these at the command line using the `--hparams` flag, for example `--hparams="batch_size=16,outputs_per_step=2"` . Hyperparameters should generally be set to the same values at both training and eval time.
 
-5. **Synthesize from a checkpoint**
+5. **Monitor with Tensorboard** (optional)
+
+    ```bash
+    tensorboard --logdir ./logs-tacotron
+    ```
+
+    Open [http://localhost:6006](http://localhost:6006)
+
+    ![Tensorboard Example](media/tensorboard-example.png)
+
+    The trainer dumps audio and alignments every 1000 steps. You can find these in ./logs-tacotron.
+
+6. **Synthesize from a checkpoint**
 
     ```bash
     python3 eval.py --checkpoint logs-tacotron/model.ckpt-185000 --text "hello text" --reference_audio /path/to/ref_audio

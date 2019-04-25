@@ -3,6 +3,7 @@ dependencies:
   - python==3.6
   - pip
   - tensorflow-gpu
+  - tensorboard 
   - pip:
     - falcon==1.2.0
     - inflect==0.2.5
