@@ -43,7 +43,7 @@ A tensorflow implementation of the [Style Tokens: Unsupervised Style Modeling, C
 2. **Run the demo server**:
 
    ```bash
-   python3 demo_server.py --checkpoint logs-tacotron/model.ckpt-319000
+   python3 demo_server.py --checkpoint logs-tacotron/model.ckpt-352000
    ```
 
 3. **Point your browser at localhost:9000**
