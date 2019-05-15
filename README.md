@@ -37,7 +37,7 @@ A tensorflow implementation of the [Style Tokens: Unsupervised Style Modeling, C
 1. **Download and unpack a model**:
 
    ```bash
-   aws s3 sync s3://devopstar/gst-tacotron/ logs-tacotron/
+   aws s3 sync s3://devopstar/resources/gst-tacotron/ logs-tacotron/
    ```
 
 2. **Run the demo server**:
